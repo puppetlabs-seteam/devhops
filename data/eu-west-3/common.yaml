@@ -1,0 +1,4 @@
+---
+devhops::region: 'eu-west-3'
+devhops::availability_zone: 'eu-west-3a'
+devhops::subnet: 'subnet-default-3a'
