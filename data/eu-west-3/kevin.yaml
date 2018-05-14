@@ -4,5 +4,5 @@ devhops::master_ip: '52.47.67.133'
 devhops::wsus_ip: ''
 devhops::elastic_ips:
   kevin-linhops-1: ''
-  "[kevin-2018.1.0-pm]": '52.47.67.133'
+  kevin-devhops-pm: '52.47.67.133'
   kevin-wsus: ''
