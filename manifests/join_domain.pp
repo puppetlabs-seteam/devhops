@@ -3,7 +3,7 @@ class devhops::join_domain {
 
   dsc_xComputer { 'JoinDomain':
     dsc_name       => $trusted['certname'],
-    dsc_domainname => lookup('devhops::windows_domain::name'),
+    dsc_domainname => lookup('devhops::windows_domain::domainname'),
     dsc_credential => {
       'user'     => lookup('devhops::windows_domain::join_user'),
       'password' => Sensitive($joinpassword)
