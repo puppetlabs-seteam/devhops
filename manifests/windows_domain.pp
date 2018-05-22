@@ -46,10 +46,11 @@ class devhops::windows_domain(
     ]
   }
 
-  reboot { 'dsc_reboot' :
-    message => 'DSC has requested a reboot',
-    when    => 'pending',
-  }
+  #Already part of profile::platform::baseline::windows::common
+  #reboot { 'dsc_reboot' :
+  #  message => 'DSC has requested a reboot',
+  #  when    => 'pending',
+  #}
 
   unless $facts['id'] =~ /^WORKGROUP\\/ {
     dsc_xadorganizationalunit { 'OU_DevHops':
