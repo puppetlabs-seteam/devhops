@@ -88,6 +88,7 @@ devhops::create_windc::user_data: |
   <powershell>
   $hosts = "$env:windir\System32\drivers\etc\hosts"
   "<%= $devhops::master_ip %> master.inf.puppet.vm master" | Add-Content -PassThru $hosts
+  "<%= $devhops::wsus_ip %> wsus.inf.puppet.vm wsus" | Add-Content -PassThru $hosts;
   [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; 
   $webClient = New-Object System.Net.WebClient; 
   $webClient.DownloadFile('https://master:8140/packages/current/install.ps1', 'install.ps1'); 
@@ -99,6 +100,7 @@ devhops::create_wsus::user_data: |
   <powershell>
   $hosts = "$env:windir\System32\drivers\etc\hosts"
   "<%= $devhops::master_ip %> master.inf.puppet.vm master" | Add-Content -PassThru $hosts
+  "<%= $devhops::wsus_ip %> wsus.inf.puppet.vm wsus" | Add-Content -PassThru $hosts;
   [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; 
   net user admin "Devops!" /add ;
   net localgroup Administrators admin /add ;
