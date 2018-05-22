@@ -21,12 +21,11 @@ class devhops::windows_domain(
     path   => $ntdspath,
   }
   
-  #Already part of profile::platform::baseline::windows::common in DevHops control-repo
-  #dsc_xdnsserveraddress { 'dnsserveraddress':
-  #  dsc_address        => '127.0.0.1',
-  #  dsc_interfacealias => 'ethernet',
-  #  dsc_addressfamily  => 'ipv4',
-  #}
+  dsc_xdnsserveraddress { 'dnsserveraddress':
+    dsc_address        => '127.0.0.1',
+    dsc_interfacealias => 'ethernet',
+    dsc_addressfamily  => 'ipv4',
+  }
 
   windowsfeature { 'Active Directory Domain Services':
     ensure                 => present,
