@@ -37,6 +37,8 @@ class devhops::create_windc (
       { protocol => 'tcp', port => 3389, cidr => '0.0.0.0/0', },
       { protocol => 'tcp',               security_group => 'devhops-agent', },
       { protocol => 'udp',               security_group => 'devhops-agent', },
+      { protocol => 'tcp',               security_group => 'devhops-wsus', },
+      { protocol => 'udp',               security_group => 'devhops-wsus', },
       { protocol => 'icmp',              cidr => '0.0.0.0/0', },
     ],
   }
