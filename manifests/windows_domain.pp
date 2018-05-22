@@ -52,7 +52,7 @@ class devhops::windows_domain(
   #  when    => 'pending',
   #}
 
-  unless $facts['id'] =~ /^WORKGROUP\\/ {
+  if "$domainnbname\\" in $facts['id'] {
     dsc_xadorganizationalunit { 'OU_DevHops':
       dsc_ensure => 'Present',
       dsc_name   => 'DevHops',
