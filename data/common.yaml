@@ -15,7 +15,7 @@ devhops::windows_domain::domainname: 'devhops.local'
 devhops::windows_domain::domainnbname: 'DEVHOPS'
 devhops::windows_domain::ntdspath: 'C:\\NTDS'
 devhops::windows_domain::safemodepw: 'PuppetD3vh0ps!'
-devhops::windows_domain::join_user: 'Administrator'
+devhops::windows_domain::join_user: 'DEVHOPS\Administrator'
 devhops::windows_domain::join_password: 'PuppetD3vh0ps!'
 
 devhops::tags:
