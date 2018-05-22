@@ -1,6 +1,6 @@
 class devhops::join_domain {
   $joinpassword = lookup('devhops::windows_domain::join_password')
-  $query        = "inventory[facts] { facts.hostname ~ 'windchops' }"
+  $query        = "inventory[facts] { facts.trusted.certname ~ 'windchops' }"
   $response     = puppetdb_query($query)
   $dcip         = $response[0]['facts']['ipaddress']
 
