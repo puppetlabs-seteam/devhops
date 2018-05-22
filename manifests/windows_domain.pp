@@ -21,11 +21,12 @@ class devhops::windows_domain(
     path   => $ntdspath,
   }
   
-  dsc_xdnsserveraddress { 'dnsserveraddress':
-    dsc_address        => '127.0.0.1',
-    dsc_interfacealias => 'ethernet',
-    dsc_addressfamily  => 'ipv4',
-  }
+  #Already part of profile::platform::baseline::windows::common in DevHops control-repo
+  #dsc_xdnsserveraddress { 'dnsserveraddress':
+  #  dsc_address        => '127.0.0.1',
+  #  dsc_interfacealias => 'ethernet',
+  #  dsc_addressfamily  => 'ipv4',
+  #}
 
   windowsfeature { 'Active Directory Domain Services':
     ensure                 => present,
@@ -53,7 +54,7 @@ class devhops::windows_domain(
     ]
   }
 
-  #Already part of profile::platform::baseline::windows::common
+  #Already part of profile::platform::baseline::windows::common in DevHops control-repo
   #reboot { 'dsc_reboot' :
   #  message => 'DSC has requested a reboot',
   #  when    => 'pending',
