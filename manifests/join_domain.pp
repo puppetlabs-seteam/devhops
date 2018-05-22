@@ -1,5 +1,6 @@
 class devhops::join_domain {
   $joinpassword = lookup('devhops::windows_domain::join_password')
+  $arrcertname  = split($trusted['certname'], '[.]')
   $query        = "inventory[facts] { facts.trusted.certname ~ 'windchops' }"
   $response     = puppetdb_query($query)
   $dcip         = $response[0]['facts']['ipaddress']
@@ -12,7 +13,7 @@ class devhops::join_domain {
   }
 
   dsc_xComputer { 'JoinDomain':
-    dsc_name       => $trusted['certname'],
+    dsc_name       => $arrcertname[0],
     dsc_domainname => lookup('devhops::windows_domain::domainname'),
     dsc_credential => {
       'user'     => lookup('devhops::windows_domain::join_user'),
