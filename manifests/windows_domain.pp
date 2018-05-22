@@ -20,6 +20,12 @@ class devhops::windows_domain(
     ensure => directory,
     path   => $ntdspath,
   }
+  
+  dsc_xdnsserveraddress { 'dnsserveraddress':
+    dsc_address        => '127.0.0.1',
+    dsc_interfacealias => 'ethernet',
+    dsc_addressfamily  => 'ipv4',
+  }
 
   windowsfeature { 'Active Directory Domain Services':
     ensure                 => present,
@@ -42,7 +48,8 @@ class devhops::windows_domain(
     require                           => [
       User['Administrator'],
       File['Active Directory NTDS'],
-      Windowsfeature['Active Directory Domain Services']
+      Windowsfeature['Active Directory Domain Services'],
+      Dsc_xdnsserveraddress['dnsserveraddress']
     ]
   }
 
