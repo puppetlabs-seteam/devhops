@@ -27,7 +27,7 @@ class devhops::windows_domain(
     installmanagementtools => true,
   }
 
-  dsc_xADDomain { "DevHops Domain (${domainname})":
+  dsc_xADDomain { "${domainname}":
     dsc_domainname                    => $domainname,
     dsc_domainadministratorcredential => {
       'user'     => 'Administrator',
@@ -57,7 +57,7 @@ class devhops::windows_domain(
       dsc_ensure => 'Present',
       dsc_name   => 'DevHops',
       dsc_path   => $dn,
-      require    => Dsc_xADDomain['DevHops Domain']
+      require    => Dsc_xADDomain["${domainname}"]
     }
 
     dsc_xaduser {'ADUser_DevHops1':
