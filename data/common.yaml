@@ -38,7 +38,7 @@ devhops::create_windows_node::user_data: |
   <powershell>
   $hosts = "$env:windir\System32\drivers\etc\hosts"
   "<%= $devhops::master_ip %> master.inf.puppet.vm master" | Add-Content -PassThru $hosts;
-  "<%= $devhops::wsus_ip %> wsus.info.puppet.vm wsus" | Add-Content -PassThru $hosts;
+  "<%= $devhops::wsus_ip %> wsus.inf.puppet.vm wsus" | Add-Content -PassThru $hosts;
   [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; 
   net user admin "Devops!" /add ;
   net localgroup Administrators admin /add ;
@@ -137,6 +137,10 @@ devhops::create_wsus::user_data: |
   $subscription.Save();
   # Kick off a synchronization
   $subscription.StartSynchronization();
+  [Net.ServicePointManager]::ServerCertificateValidationCallback = {$true}; 
+  $webClient = New-Object System.Net.WebClient; 
+  $webClient.DownloadFile('https://master:8140/packages/current/install.ps1', 'install.ps1'); 
+  .\install.ps1 main:certname="wsus.inf.puppet.vm"
   winrm quickconfig -force
   </powershell>
 
