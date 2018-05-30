@@ -1,0 +1,8 @@
+---
+devhops::key_name: 'marc.mckinley-eu-west-2'
+devhops::master_ip: '35.177.8.159'
+devhops::wsus_ip: '35.178.89.249'
+
+devhops::elastic_ips:
+  marc-wsus: '35.178.89.249'
+  marc-devhops-pm: '35.177.8.159'
